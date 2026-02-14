@@ -1,6 +1,6 @@
 # MOVSTR - Free Movies with Nostr
 
-A decentralized streaming movie platform where users watch movies for free by signing in with their Nostr identity. No ads, no subscriptions, no credit cards.
+A decentralized streaming movie platform where users watch movies for free by signing in with their Nostr identity. No ads,  no credit cards and free
 
 ## Features
 
