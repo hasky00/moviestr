@@ -372,9 +372,14 @@
         <nav class="fixed top-0 w-full bg-black bg-opacity-50 backdrop-blur-lg z-50">
             <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
                 <h1 class="text-3xl font-black text-red-500">MOVSTR</h1>
-                <button onclick="scrollToLogin()" class="red-button px-6 py-2 rounded-lg font-semibold text-sm">
-                    Sign In
-                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="scrollToDonate()" class="copy-btn px-4 py-2 text-sm" style="font-size:0.8rem;padding:8px 16px;">
+                        &#8383; Donate
+                    </button>
+                    <button onclick="scrollToLogin()" class="red-button px-6 py-2 rounded-lg font-semibold text-sm">
+                        Sign In
+                    </button>
+                </div>
             </div>
         </nav>
 
@@ -393,15 +398,33 @@
                     </p>
                 </div>
 
+                <!-- Donation Banner (Landing - prominent) -->
+                <div class="max-w-2xl mx-auto mb-12 fade-in">
+                    <div class="donate-banner" style="justify-content:center;text-align:center;flex-direction:column;gap:12px;padding:24px 32px;border-color:rgba(247,147,26,0.4);">
+                        <div class="flex items-center gap-3" style="justify-content:center;">
+                            <span style="font-size:2rem;line-height:1;">&#8383;</span>
+                            <div style="text-align:left;">
+                                <p class="text-lg font-bold text-white">Keep Movies Free Forever</p>
+                                <p class="text-sm text-gray-400">Donate Bitcoin to support MOVSTR - no ads, no fees, just movies</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3" style="justify-content:center;flex-wrap:wrap;">
+                            <code class="btc-address" onclick="copyBtcAddress()" title="Click to copy" style="font-size:0.7rem;padding:8px 12px;margin:0;">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code>
+                            <button class="copy-btn" onclick="copyBtcAddress()">
+                                Donate / Copy BTC
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Featured Clips Preview -->
                 <div class="mb-16">
                     <h2 class="text-3xl font-bold mb-8 text-center slide-in-left">🎬 Preview Our Movies</h2>
                     <div class="video-grid">
                         <!-- Clip 1 -->
                         <div class="clip-container aspect-video slide-in-left" onclick="playClip(&#39;clip1&#39;)">
-                            <video id="clip1" muted="" loop="" preload="metadata" class="w-full h-full object-cover" onloadeddata="setupHoverPlay(&#39;clip1&#39;)">
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4#t=10,30" type="video/mp4">
-                                <source src="https://sample-videos.com/zip/10/mp4/720/mp4-sample_750x.mp4#t=5,25" type="video/mp4">
+                            <video id="clip1" muted="" loop="" playsinline="" preload="auto" class="w-full h-full object-cover" poster="https://image.tmdb.org/t/p/w780/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
                             </video>
                             <div class="clip-overlay">
                                 <div class="flex items-center space-x-2">
@@ -418,9 +441,8 @@
 
                         <!-- Clip 2 -->
                         <div class="clip-container aspect-video slide-in-right" onclick="playClip(&#39;clip2&#39;)">
-                            <video id="clip2" muted="" loop="" preload="metadata" class="w-full h-full object-cover" onloadeddata="setupHoverPlay(&#39;clip2&#39;)">
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#t=30,50" type="video/mp4">
-                                <source src="https://sample-videos.com/zip/10/mp4/720/mp4-sample_750x.mp4#t=10,30" type="video/mp4">
+                            <video id="clip2" muted="" loop="" playsinline="" preload="auto" class="w-full h-full object-cover" poster="https://image.tmdb.org/t/p/w780/sBOHKsEpGkT1sHp4VaJAhIFNpwR.jpg">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                             </video>
                             <div class="clip-overlay">
                                 <div class="flex items-center space-x-2">
@@ -437,9 +459,8 @@
 
                         <!-- Clip 3 -->
                         <div class="clip-container aspect-video slide-in-left" onclick="playClip(&#39;clip3&#39;)">
-                            <video id="clip3" muted="" loop="" preload="metadata" class="w-full h-full object-cover" onloadeddata="setupHoverPlay(&#39;clip3&#39;)">
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4#t=20,40" type="video/mp4">
-                                <source src="https://sample-videos.com/zip/10/mp4/720/mp4-sample_750x.mp4#t=15,35" type="video/mp4">
+                            <video id="clip3" muted="" loop="" playsinline="" preload="auto" class="w-full h-full object-cover" poster="https://image.tmdb.org/t/p/w780/A4F2p61ULqcOSaij4mDU6KOsFNo.jpg">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4">
                             </video>
                             <div class="clip-overlay">
                                 <div class="flex items-center space-x-2">
@@ -476,7 +497,7 @@
                 </div>
 
                 <!-- Donation Section -->
-                <div class="max-w-2xl mx-auto mb-16 fade-in">
+                <div id="donateSection" class="max-w-2xl mx-auto mb-16 fade-in">
                     <div class="donate-card">
                         <div class="btc-icon">&#8383;</div>
                         <h3 class="text-2xl font-bold mb-2 text-white">Keep Movies Free Forever</h3>
@@ -584,8 +605,8 @@
                             </div>
                         </div>
                         <div class="clip-container aspect-video" onclick="playFullMovie()">
-                            <video muted="" loop="" autoplay="" class="w-full h-full object-cover rounded-xl">
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4#t=10,40" type="video/mp4">
+                            <video muted="" loop="" autoplay="" playsinline="" class="w-full h-full object-cover rounded-xl" poster="https://image.tmdb.org/t/p/w780/sBOHKsEpGkT1sHp4VaJAhIFNpwR.jpg">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                             </video>
                             <div class="play-overlay" style="width: 80px; height: 80px; font-size: 24px;">▶</div>
                         </div>
@@ -932,7 +953,14 @@
         // ==========================================
 
         function scrollToLogin() {
-            document.getElementById('loginSection').scrollIntoView({ 
+            document.getElementById('loginSection').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToDonate() {
+            document.getElementById('donateSection').scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
             });
@@ -998,18 +1026,24 @@
         
         function setupHoverPlay(videoId) {
             const video = document.getElementById(videoId);
+            if (!video) return;
             const container = video.closest('.clip-container');
-            
+
             container.addEventListener('mouseenter', () => {
                 video.play().catch(() => {});
             });
-            
+
             container.addEventListener('mouseleave', () => {
                 video.pause();
-                video.currentTime = 0;
+            });
+
+            // Show poster fallback text if video fails to load
+            video.addEventListener('error', function() {
+                const overlay = container.querySelector('.clip-overlay');
+                if (overlay) overlay.style.background = 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(30,30,30,0.85) 50%, rgba(0,0,0,0.9) 100%)';
             });
         }
-        
+
         function showToast(message, type) {
             const toast = document.createElement('div');
             const colors = {
@@ -1037,13 +1071,16 @@
         
         // Video event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Setup hover-to-play for all preview clips
+            ['clip1', 'clip2', 'clip3'].forEach(id => setupHoverPlay(id));
+
             const mainVideo = document.getElementById('mainVideoPlayer');
-            
+
             if (mainVideo) {
                 mainVideo.addEventListener('play', function() {
                     showToast('▶️ Enjoying the movie!', 'info');
                 });
-                
+
                 mainVideo.addEventListener('ended', function() {
                     showToast('🎬 Thanks for watching! More movies coming soon.', 'success');
                 });
